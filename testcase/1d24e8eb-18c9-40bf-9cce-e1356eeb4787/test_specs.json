@@ -1,0 +1,17 @@
+{
+  "name": "Integration - SharePoint Authentication Failure",
+  "description": "Tests the integration between the agent and SharePoint authentication, ensuring proper error handling when credentials are invalid.",
+  "test_type": "integration",
+  "input": "A POST request to /calculate_shift_allowance with valid input, but environment variables for SharePoint credentials are missing or incorrect.",
+  "output": "A JSON response with success=false, error_type='AUTHENTICATION_ERROR', and fixing_tips about credentials.",
+  "success_criteria": [
+    "HTTP status code is 400",
+    "response['success'] is False",
+    "response['error_type'] == 'AUTHENTICATION_ERROR'",
+    "response['fixing_tips'] contains credential guidance"
+  ],
+  "error_scenarios": [
+    "SharePoint OAuth2 authentication fails",
+    "Missing environment variables"
+  ]
+}
