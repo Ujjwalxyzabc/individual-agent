@@ -1,0 +1,16 @@
+{
+  "name": "Functional - Input Too Large",
+  "description": "Checks that the API enforces the maximum input text length and returns an appropriate error for oversized input.",
+  "test_type": "functional",
+  "input": "A POST request to /calculate_shift_allowance with a sharepoint_url or excel_file_path exceeding MAX_TEXT_LENGTH.",
+  "output": "A JSON response with success=false, error_type='INPUT_TOO_LARGE', and fixing_tips about reducing input size.",
+  "success_criteria": [
+    "HTTP status code is 413",
+    "response['success'] is False",
+    "response['error_type'] == 'INPUT_TOO_LARGE'",
+    "response['fixing_tips'] mentions input size"
+  ],
+  "error_scenarios": [
+    "Input field exceeds allowed length"
+  ]
+}
