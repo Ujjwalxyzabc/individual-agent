@@ -1,0 +1,18 @@
+{
+  "name": "Functional - Successful Shift Allowance Calculation",
+  "description": "Validates the end-to-end workflow for a successful shift allowance calculation given valid SharePoint URL and Excel file path.",
+  "test_type": "functional",
+  "input": "A POST request to /calculate_shift_allowance with a valid SharePoint URL and Excel file path pointing to a well-formed .xlsx file containing required columns.",
+  "output": "A JSON response with success=true, containing calculation results and an LLM-generated explanation.",
+  "success_criteria": [
+    "HTTP status code is 200",
+    "response['success'] is True",
+    "response['result']['calculation'] contains formatted allowance output",
+    "response['result']['explanation'] is a non-empty string"
+  ],
+  "error_scenarios": [
+    "SharePoint file not accessible",
+    "Excel file missing required columns",
+    "LLM API failure"
+  ]
+}
