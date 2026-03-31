@@ -1,0 +1,18 @@
+{
+  "name": "Functional - Input Validation Failure",
+  "description": "Ensures that the API returns a proper error when the input JSON is missing required fields or contains invalid values.",
+  "test_type": "functional",
+  "input": "A POST request to /calculate_shift_allowance with missing or invalid sharepoint_url or excel_file_path (e.g., wrong format, not ending with .xlsx).",
+  "output": "A JSON response with success=false, error_type='INPUT_VALIDATION_ERROR', and appropriate fixing_tips.",
+  "success_criteria": [
+    "HTTP status code is 400",
+    "response['success'] is False",
+    "response['error_type'] == 'INPUT_VALIDATION_ERROR'",
+    "response['fixing_tips'] contains guidance"
+  ],
+  "error_scenarios": [
+    "Malformed JSON",
+    "Missing required fields",
+    "Invalid field formats"
+  ]
+}
