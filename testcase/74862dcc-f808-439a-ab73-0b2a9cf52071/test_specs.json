@@ -1,0 +1,17 @@
+{
+  "name": "Integration - Excel File Parsing Error",
+  "description": "Verifies that the agent properly handles Excel files that are missing required columns or are corrupted.",
+  "test_type": "integration",
+  "input": "A POST request to /calculate_shift_allowance with a valid SharePoint URL and Excel file path, but the file is missing one or more required columns.",
+  "output": "A JSON response with success=false, error_type='INVALID_FORMAT', and fixing_tips about Excel columns.",
+  "success_criteria": [
+    "HTTP status code is 400",
+    "response['success'] is False",
+    "response['error_type'] == 'INVALID_FORMAT'",
+    "response['fixing_tips'] mentions required columns"
+  ],
+  "error_scenarios": [
+    "Excel file missing columns",
+    "Excel file is not a valid .xlsx"
+  ]
+}
